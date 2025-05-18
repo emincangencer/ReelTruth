@@ -82,7 +82,7 @@ export default function Home() {
             id="url-input"
             type="text"
             className="flex-grow"
-            placeholder="Enter YouTube Short URL"
+            placeholder="Enter YouTube URL"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
