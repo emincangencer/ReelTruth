@@ -46,7 +46,7 @@ Instructions:
 
     console.log("Step 1: Extracting factual statements...");
     const extractResponse = await genAI.models.generateContent({
-      model: 'gemini-2.0-flash-001',
+      model: process.env.GEMINI_EXTRACT_MODEL || 'gemini-2.0-flash-001',
       contents: extractContents,
     });
     const extractedStatements = extractResponse.text;
@@ -76,7 +76,7 @@ ${extractedStatements}
 
     console.log("Step 2: Evaluating statements...");
     const evaluateResponse = await genAI.models.generateContent({
-      model: 'gemini-2.5-flash-preview-04-17',
+      model: process.env.GEMINI_EVALUATE_MODEL || 'gemini-2.0-flash-001',
       contents: evaluateContents,
     });
     const analysisResult = evaluateResponse.text;
