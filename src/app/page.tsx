@@ -23,6 +23,15 @@ export default function Home() {
     setAnalysisResult('');
     setLoading(true);
     setError(''); // Clear previous errors
+    setAnalysisResult(''); // Clear previous results
+
+    // Basic validation for YouTube URL format
+    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
+    if (!youtubeRegex.test(url)) {
+      setError('Please enter a valid YouTube URL.');
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch('/api/analyze', {
