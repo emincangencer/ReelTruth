@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import ReactMarkdown from 'react-markdown';
+import ISO6391 from 'iso-639-1';
 import {
   Select,
   SelectContent,
@@ -18,6 +19,13 @@ export default function Home() {
   const [analysisResult, setAnalysisResult] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  // Generate language options from iso-639-1, displaying names in English
+  const languageOptions = ISO6391.getAllCodes()
+    .map(code => ({
+      value: code,
+      label: ISO6391.getName(code) || code, // Use English name, fallback to code
+    }));
 
   const handleAnalyze = async () => {
     setError('');
@@ -83,10 +91,11 @@ export default function Home() {
               <SelectValue placeholder="Select language" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="en">English</SelectItem>
-              <SelectItem value="tr">Turkish</SelectItem>
-              <SelectItem value="es">Spanish</SelectItem>
-              {/* Add more language options as needed */}
+              {languageOptions.map((lang) => (
+                <SelectItem key={lang.value} value={lang.value}>
+                  {lang.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
           <Button
