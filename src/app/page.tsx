@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import ReactMarkdown from 'react-markdown';
 import {
   Select,
   SelectContent,
@@ -100,9 +101,9 @@ export default function Home() {
         {error && <div className="text-red-500 mt-4">Error: {error}</div>}
 
         {analysisResult && (
-          <div className="mt-4 p-4 border rounded bg-gray-100 dark:bg-gray-800 whitespace-pre-wrap w-full">
+          <div className="mt-4 p-4 border rounded bg-gray-100 dark:bg-gray-800 w-full">
             <h2 className="text-xl font-semibold mb-2">Analysis Result:</h2>
-            {analysisResult}
+            <ReactMarkdown>{analysisResult}</ReactMarkdown>
           </div>
         )}
       </main>
