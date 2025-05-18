@@ -15,6 +15,8 @@ Create a `.env.local` file in the root of the project and add your Gemini API ke
 
 ```
 GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+GEMINI_EXTRACT_MODEL=model_with_video_understanding
+GEMINI_EVALUATE_MODEL=model_with_video_understanding
 ```
 
 Replace `YOUR_GEMINI_API_KEY` with your actual API key.
